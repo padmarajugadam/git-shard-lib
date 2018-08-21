@@ -1,6 +1,21 @@
-#!/usr/bin/env groovy
+def call(body) {
+    def config = [:]
+    body.resolveStrategy = Closure.DELEGATE_FIRST
+    body.delegate = config
+    body()
 
-def call(String name = 'human') {
-  echo "Hello, ${name}."
+    node {
+	    // Clean workspace before doing anything
+	    deleteDir()
+
+	    try {
+	        stage ('Clone') {
+	        	checkout scm
+	        }
+
+	    } 
+    }
 }
+
+
 
