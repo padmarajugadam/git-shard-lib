@@ -1,17 +1,7 @@
-def call(Map pipelineParams) {
+def info(message) {
+    echo "INFO: ${message}"
+}
 
-    pipeline {
-        agent any
-        stages {
-            stage('checkout git') {
-                steps {
-                    git branch: pipelineParams.branch, credentialsId: 'GitCredentials', url: pipelineParams.scmUrl
-                }
-            }
-
-        
-            }
-
-          
-            }
-        }
+def warning(message) {
+    echo "WARNING: ${message}"
+}
